@@ -3,15 +3,15 @@
 
 ### Copy files to read<br>
 
-hadoop fs -copyFromLocal emp.csv pig/emp.csv <br>
+hadoop fs -put  '/home/anusree/hadoopdata/emp.csv' /user/data/emp.csv <br>
 
 ### Load Data<br>
 
- A = load '/user/root/pig/emp.csv' using PigStorage(',') as (eid:int,ename:chararray,epos:chararray,esal:int,ecom:int,edpno:int);
+ A = load '/user/data/emp.csv' using PigStorage(',') as (eid:int,ename:chararray,epos:chararray,esal:int,ecom:int,edpno:int);
  
 Dump A;<br>
 
-A2 = load '/user/root/pig/emp.csv’;<br>
+A2 = load '/user/data/emp.csv’;<br>
 describe A2;<br>
 
 
@@ -27,7 +27,7 @@ D = order C by esal desc;<br>
 
 ### Store Data<br>
 
-store D into '/pig/pigout1’ using PigStorage(',’);<br>
+store D into 'user/pig/pigout1’ using PigStorage(',’);<br>
 
 
 ### Transform (by column)<br>
